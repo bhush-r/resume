@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import Sidebar from "./components/sidebar/Sidebar"
+import Services from './components/services/Services'
+import Resume from './components/resume/Resume'
+import Home from './components/home/Home'
+import About from './components/about/About'
+import Portfolio from './components/portfolio/Portfolio'
+import Testimonials from './components/testimonials/Testimonials'
+import Blog from './components/blog/Blog'
+import Contact from './components/contact/Contact'
+import Pricing from './components/pricing/Pricing'
+// import ParticlesComponent from './components/home/praticles';
 
-function App() {
+const App= () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+        <Sidebar />
+        <main className='main'>
+          {/* <ParticlesComponent id="particles"/> */}
+          <Home/>
+          <About />
+          <Services/>
+          <Resume />
+          <Portfolio />
+          <Pricing />
+          <Testimonials />
+          <Blog />
+          <Contact />
+        </main>
+    </>
+  )
 }
 
-export default App;
+export default App
