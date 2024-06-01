@@ -3,15 +3,15 @@ import React from 'react'
 const HeaderSocials = () => {
   return (
     <div className="home__socials">
-        <a href="https://www.instagram.com/" className="home__social-link" target="_blank">
+        <a href="https://x.com/bhushanlilhare1" className="home__social-link" target="_blank">
             <i class="fa-brands fa-telegram"></i>
         </a>
 
-        <a href="https://www.twitter.com/" className="home__social-link" target="_blank">
+        <a href="https://x.com/bhushanlilhare1" className="home__social-link" target="_blank">
             <i class="fa-brands fa-twitter"></i>
         </a>
 
-        <a href="https://github.com/AgredaLuis" className="home__social-link" target="_blank">
+        <a href="https://github.com/bhush-r" className="home__social-link" target="_blank">
             <i class="fa-brands fa-github"></i>
         </a>
 

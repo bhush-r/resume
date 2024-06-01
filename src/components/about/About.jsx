@@ -87,7 +87,7 @@ const About = () => {
       </div>
 
       {/* <AboutBox /> */}
-
+    
     </section>
     )
 }

@@ -9,7 +9,7 @@ import ParticlesComponent from "./ParticlesComponent"; // Correct import path
 const Home = () => {
   return (
     <section className="home container" id="home">
-      <ParticlesComponent id="tsparticles" /> {/* Place ParticlesComponent outside the intro div */}
+      {/* Place ParticlesComponent outside the intro div */}
       <div className="intro">
         <img src={Me} alt="" className="home__img" />
         <h1 className="home__name">Bhushan Lilhare</h1>
@@ -19,7 +19,9 @@ const Home = () => {
 
         <a href="#contact" className="btn">Hire Me</a>
         <ScrollDown />
+        
       </div>
+      <ParticlesComponent id="home-particles" /> 
     </section>
   );
 }

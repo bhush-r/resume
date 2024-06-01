@@ -8,12 +8,21 @@ const Data = [
       desc: "Pursued Bachelor of Technology from G.H Raisoni College of Engineering, Nagpur (Affilated to RTMNU) with major in Computer Science and Engineerig ",
     },
     {
+      id: 7,
+      category: "education",
+      icon: "icon-graduation",
+      year: "2020 - 2023",
+      title: "Diploma in Computer Sci & Engineering",
+      desc: "Government Polytechnic College, Gondia        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n MSBTE"
+      
+    },
+    {
       id: 2,
       category: "education",
       icon: "icon-graduation",
       year: "2019 - 2020",
       title: "Higher Secondary (Class 12th)",
-      desc: "PCM with Information Technology     \n\n\n\n\n\n\n\n\n\nFunde Science Junior College."
+      desc: "Maharashtra State Board of Secondary and Higher Secondary"
       
     },
     {
@@ -22,32 +31,47 @@ const Data = [
       icon: "icon-graduation",
       year: "2017 - 2018",
       title: "Secondary (Class 10th)",
-      desc: "Vivek Mandir School",
+      desc: "Maharashtra State Board of Secondary and Higher Secondary",
     },
     {
       id: 4,
       category: "experience",
       icon: "icon-briefcase",
-      year: "2019 - present",
-      title: "Web Designer",
-      desc: "Lorem ipsum dolor sit amet quo ei simul congue exerci     ad nec admodum perfecto.",
-    },
+      year: "Nov 2023 - Feb 2024",
+      title: "Software Testing Automation",
+      desc: (<div> <p>• Gained hands-on experience with Katalon Studio for automating test cases.   </p> <p>  • Executed automated tests, enhancing the efficiency and reliability of software testing processes.</p></div>),
+      link: "https://smartinternz.com/internships/katalon-virtual-internship/5470317571e6488699c5096861915107"
+  },
     {
       id: 5,
       category: "experience",
       icon: "icon-briefcase",
-      year: "2013 - 2017",
-      title: "Front-End Developer",
-      desc: "Lorem ipsum dolor sit amet quo ei simul congue exerci     ad nec admodum perfecto.",
+      year: "Aug 2022 - Aug 2022",
+      title: "Android Development ",
+      desc: (<div> <p>•  Completed an in-depth course on Kotlin, Java programming, Firebase, and XML. </p> <p>  • Gained practical experience in mobile app development and user interface design.</p></div>),
+      link: "https://smartinternz.com/internships/katalon-virtual-internship/5470317571e6488699c5096861915107"
+  
     },
     {
       id: 6,
       category: "experience",
       icon: "icon-briefcase",
-      year: "2009 - 2013",
-      title: "Back-End Developer",
-      desc: "Lorem ipsum dolor sit amet quo ei simul congue exerci     ad nec admodum perfecto.",
-    },
+      year: "Nov 2023 - Dec 2023",
+      title: "Java Programming ",
+      desc: (<div> <p>• Worked on Java-based projects, honing skills in object-oriented programming and application development.   </p> <p>  • Enhanced problem-solving abilities through hands-on coding exercises.</p></div>),
+      link: "https://drive.google.com/file/d/1z2AMluPdYv_nmyupJ63F3E2HgMZDyqFq/view"
+  },
+
+  {
+    id: 8,
+    category: "experience",
+    icon: "icon-briefcase",
+    year: "Jul 2022 - Aug 2022",
+    title: "Internet Of Things (IoT) ",
+    desc: (<div> <p>• Underwent a 6-week intensive training on IoT methodologies, tools, and techniques, Acquired knowledge in IoT device integration and smart home automation.   </p></div>),
+    // link: "https://drive.google.com/file/d/1z2AMluPdYv_nmyupJ63F3E2HgMZDyqFq/view"
+},
+
   ];
 
 export default Data

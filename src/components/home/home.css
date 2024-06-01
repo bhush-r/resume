@@ -1,10 +1,13 @@
+
 .home {
   position: relative;
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  overflow: hidden;
+  }
 
 .intro {
   max-width: 540px;

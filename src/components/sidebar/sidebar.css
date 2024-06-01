@@ -1,73 +1,80 @@
-.aside{
-    position: fixed;
+/* sidebar.css */
+.navbar {
+    /* position: fixed; */
     left: 0;
     top: 0;
-    background: var(--body-color);
-    border-right: 1px solid rgba(0, 0 , 0, 0.05);
-    padding: 2.5rem;
-    width: 110px;
-    min-height: 100vh;
+
+    /* border-bottom: 1px solid rgba(236, 163, 163, 0.05); */
+    padding: 1.5rem 2.5rem;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    z-index: 10;
-    transform: .3s;
-}
-
-.nav__list{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
-.nav__link{
-    font-size: 1.5rem;
-    color: var(--title-color);
-    font-weight: var(--font-bold);
-    transition: .3s;
-}
-
-.nav__link:hover{
-    color: hsl(43, 100%, 68%)
-}
-.copyright{
-    color: hsl(245,15%,65%);
-    font-size:var(--small-font-size);
-    transform: rotate(-180deg);
-    writing-mode:vertical-rl;
-}
-
-.nav__toggle{
-    position: fixed;
-    top: 1.2rem;
-    left: 1.875rem;
-    cursor: pointer;
-    height: 40px;
-    width: 45px;
-    background-color: var(--body-color);
-    border: 1px solid #e8dfec;
-    display: none;
-    justify-content: center;
     align-items: center;
-    z-index: 1;
-    transition: .3s;
+    z-index: 10;
+    transition: 0.3s;
+
+    
 }
 
-@media screen and (max-width: 1024px){
-    .aside{
-        left: -110px;
-    }
+.navbar__logo {
+    display: flex;
+    align-items: center;
+}
 
-    .nav__toggle{
+.navbar__toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__item {
+    margin-right: 1.5rem;
+}
+
+.navbar__link {
+    color: var(--title-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    transition: 0.3s;
+}
+
+.navbar__link:hover {
+    color: hsl(43, 100%, 68%);
+}
+
+/* Hamburger menu and responsive styles */
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: block;
+    }
+    .navbar__menu {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--body-color);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        display: none;
+    }
+    .navbar__menu--open {
         display: flex;
     }
-
-    .nav__toggle-open{
-        left: 140px;
+    .navbar__item {
+        margin-right: 0;
+        margin-bottom: 1rem;
     }
+}
 
-    .show-menu{
-        left: 0;
-    }
-
+/* When navbar is open */
+.navbar--open {
+    background: var(--body-color);
 }
