@@ -23,7 +23,7 @@ const About = () => {
             with Arduino and other IoT devices.
             </p>
             <a href="" className="btn">
-              Download CV
+              Download Resume
             </a>
           </div>
 
@@ -87,7 +87,7 @@ const About = () => {
       </div>
 
       {/* <AboutBox /> */}
-    
+      
     </section>
     )
 }

@@ -18,8 +18,6 @@ const App = () => {
     <>
       <Sidebar />
       <main className='main'>
-        {/* Place ParticlesComponent within the main element */}
-        {/* <ParticlesComponent id="home-particles" /> */}
         <Home />
         <About />
         <Services />
