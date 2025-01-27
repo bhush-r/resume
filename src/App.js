@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Sidebar from './components/sidebar/Sidebar';
+// import Topbar from './components/topbar/Topbar';
+import Topbar from './components/topbar/Topbar';
 import Services from './components/services/Services';
 import Resume from './components/resume/Resume';
 import Home from './components/home/Home';
@@ -16,7 +17,7 @@ import Pricing from './components/pricing/Pricing';
 const App = () => {
   return (
     <>
-      <Sidebar />
+      <Topbar />
       <main className='main'>
         <Home />
         <About />

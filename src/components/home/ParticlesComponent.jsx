@@ -1,8 +1,6 @@
-// src/components/home/ParticlesComponent.jsx
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
-import { loadSlim } from "@tsparticles/slim"; // ensure this package is installed
-// import './ParticlesComponent.css';
+import { loadSlim } from "@tsparticles/slim"; // Ensure this package is installed
 
 const ParticlesComponent = (props) => {
   const [init, setInit] = useState(false);
@@ -21,12 +19,15 @@ const ParticlesComponent = (props) => {
 
   const options = useMemo(
     () => ({
+      fullScreen: {
+        enable: false, // Disables full-screen mode to allow bounding
+      },
       background: {
         color: {
-          // value: "#1E2F97",
+          value: "transparent", // Transparent background
         },
       },
-      fpsLimit: 120,
+      fpsLimit: 190,
       interactivity: {
         events: {
           onClick: {
@@ -35,7 +36,7 @@ const ParticlesComponent = (props) => {
           },
           onHover: {
             enable: true,
-            mode: 'repulse',
+            mode: "repulse",
           },
         },
         modes: {
@@ -54,7 +55,7 @@ const ParticlesComponent = (props) => {
         },
         links: {
           color: "#FFFFFF",
-          distance: 150,
+          distance: 200,
           enable: true,
           opacity: 0.5,
           width: 1,
@@ -66,12 +67,13 @@ const ParticlesComponent = (props) => {
             default: "bounce",
           },
           random: true,
-          speed: 4,
+          speed: 5.2,
           straight: false,
         },
         number: {
           density: {
-            enable: false,
+            enable: true,
+            area: 800, // Limits the particle density
           },
           value: 100,
         },
@@ -82,14 +84,22 @@ const ParticlesComponent = (props) => {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 2 },
+          value: { min: 1, max: 3 },
         },
       },
       detectRetina: true,
     }),
     []
   );
-  return <Particles id={props.id} init={particlesLoaded} options={options} />;
+
+  return (
+    <Particles
+      id={props.id}
+      init={particlesLoaded}
+      options={options}
+      className="particles-container"
+    />
+  );
 };
 
 export default ParticlesComponent;

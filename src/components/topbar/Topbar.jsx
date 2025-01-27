@@ -1,6 +1,6 @@
-// Sidebar.jsx
+// Topbar.jsx
 import React, { useState } from 'react';
-import "./sidebar.css";
+import "./topbar.css";
 import Logo from "../../assets/logo.svg";
 
 const Sidebar = () => {

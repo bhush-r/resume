@@ -30,7 +30,8 @@
 }
 
 .home__social-link {
-  color: var(--title-color);
+  /* color: var(--title-color); */
+  color: hsl(0, 0%, 100%);
   font-size: 1.3rem;
   transition: 0.3s;
 }
@@ -41,10 +42,11 @@
 
 .scroll__down {
   /* position: absolute; */
-  bottom: 2.5rem;
+  /* bottom: 2.5rem; */
   left: 0;
   width: 100%;
-  margin: 1rem 0rem;
+  /* margin: 1rem 0rem; */
+  margin-top: 10rem;
 }
 
 .home__scroll-name {
@@ -166,13 +168,46 @@
   
 /* } */ 
 
+/* .particles-container { */
+  /* position: absolute; */
+  /* width: 100%; */
+  /* height: 100vh; */
+  /* or any other height you want */
+  /* overflow: hidden; */
+/* } */
+/* Ensures the particles are constrained to the .home.container */
 .particles-container {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 0vh;
-  /* or any other height you want */
-  overflow: hidden;
+  height: 100%; /* Matches the height of the container */
+  z-index: 0; /* Place it behind other content */
+  pointer-events: none; /* Prevent interaction with particles */
 }
+
+.home.container {
+  position: relative;
+  z-index: 1; /* Ensure it's above the particles */
+}
+
+
+.txt-rotate > .wrap {
+  border-right: 0.08em solid #666;
+  display: inline-block;
+  animation: blink-cursor 0.7s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: #666;
+  }
+}
+
+
 
 @media screen and (max-width: 1024px) {
   .home__social-link {
