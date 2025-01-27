@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/sidebar/Sidebar';
 import Services from './components/services/Services';
 import Resume from './components/resume/Resume';
@@ -11,7 +11,7 @@ import Testimonials from './components/testimonials/Testimonials';
 import Blog from './components/blog/Blog';
 import Contact from './components/contact/Contact';
 import Pricing from './components/pricing/Pricing';
-import ParticlesComponent from './components/home/ParticlesComponent'; // Import ParticlesComponent
+// import ParticlesComponent from './components/home/ParticlesComponent'; // Import ParticlesComponent
 
 const App = () => {
   return (
