@@ -7,10 +7,10 @@
 
   /*   Color mode HSL (hue, saturation, lightness)  */
   --first-color: hsl(353, 100%, 65%);
-  --title-color: hsl(244, 24%, 26%);
-  --text-color: hsl(244, 16%, 43%);
-  --body-color: hsl(258,60%, 98%);
-  --container-color: #fff;
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: hsl(0, 0%, 100%);
+  --body-color: #13213c;
+  --container-color: #1d3557;
   --container-color2: #1D3557;
   
   /* =======================  Font and typography ===========================*/
