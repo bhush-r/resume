@@ -67,15 +67,15 @@ const ParticlesComponent = (props) => {
             default: "bounce",
           },
           random: true,
-          speed: 5.2,
+          speed: 5.3,
           straight: false,
         },
         number: {
           density: {
             enable: true,
-            area: 800, // Limits the particle density
+            area: 140, // Limits the particle density
           },
-          value: 100,
+          value: 140, // Number of particles
         },
         opacity: {
           value: 1.0,
@@ -84,7 +84,7 @@ const ParticlesComponent = (props) => {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: { min: 1, max: 2 }, // Size of particles
         },
       },
       detectRetina: true,
