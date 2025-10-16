@@ -9,10 +9,17 @@
   .work__item {
     cursor: pointer;
     font-weight: var(--font-bold);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    transition: 0.3s;
+    user-select: none; /* Prevent accidental text selection on mobile */
   }
   
+  /* Active filter styling */
+  .work__item.active-work,
   .work__item:hover {
     color: var(--first-color);
+    background-color: var(--container-color);
   }
   
   .work__container {
@@ -25,6 +32,9 @@
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    background-color: var(--container-color); 
+    transition: transform 0.3s ease; 
+    height: 100%; /* Ensure cards in a row have equal height */
   }
   
   .work__mask {
@@ -68,22 +78,25 @@
     transition: .3s;
     opacity: 0;
   }
+  
+  /* Updated button to open modal */
   .work__button {
     color: #fff;
     position: absolute;
     bottom: 1.5rem;
     left: 1.5rem;
     font-size: var(--h3-font-size);
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #ffd15c;
     height: 40px;
     width: 40px;
     cursor: pointer;
     border-radius: 50%;
-    text-align: center;
-    line-height: 42px;
     transition: .3s;
     opacity: 0;
+    border: none; 
   }
   
   .work__card:hover .work__button {
@@ -95,8 +108,150 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+
+  /* ==================== MODAL STYLES ==================== */
+  .modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95); /* Darker overlay */
+    z-index: 10000; /* Ensure it is above the navbar (z-index: 100) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    overflow-y: auto; 
+  }
+
+  .modal__content {
+    background-color: var(--container-color); 
+    border-radius: var(--border-radius);
+    max-width: 900px;
+    width: 95%;
+    position: relative;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--first-color);
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s;
+  }
+  .modal__close:hover {
+    transform: rotate(90deg);
+  }
+
+  .modal__image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: var(--border-radius);
+    object-fit: contain;
+    align-self: flex-start;
+    padding: 1rem;
+    background-color: #0d172a; /* Slightly different background for image container */
+  }
+
+  .modal__title {
+    font-size: var(--h2-font-size);
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
   
+  .modal__category {
+    color: var(--first-color);
+    font-weight: var(--font-semibold);
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: var(--normal-font-size);
+    text-transform: uppercase;
+  }
+
+  .modal__description {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    text-align: justify;
+  }
   
+  .modal__tech-heading {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-semibold);
+    margin-bottom: 0.75rem;
+    color: var(--first-color);
+  }
+
+  .modal__tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .tech-badge {
+    background-color: #23325c;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    transition: background-color 0.2s;
+    border: 1px solid #2d406b;
+  }
+
+  .modal__actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .modal__action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Increased gap */
+    text-decoration: none;
+    font-size: var(--normal-font-size);
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  /* Primary button (Live Demo) uses first-color */
+  .modal__actions .btn:not(.modal__action-repo) {
+    background-color: var(--first-color);
+    color: #fff;
+    border: 1px solid var(--first-color);
+  }
+  .modal__actions .btn:not(.modal__action-repo):hover {
+      background-color: transparent;
+      color: var(--first-color);
+  }
+
+
+  .modal__action-repo {
+    background-color: var(--container-color2); /* A slightly darker container color */
+    color: var(--first-color);
+    border: 1px solid var(--first-color);
+  }
+  .modal__action-repo:hover {
+    background-color: var(--first-color);
+    color: var(--body-color);
+  }
+
+  
+  /* ==================== MEDIA QUERIES ==================== */
   @media screen and (max-width: 1024px){
     .work__filters{
       justify-content: center;
@@ -106,7 +261,15 @@
         justify-content: center;
         row-gap: 1.875rem;
     }
-  
+    .modal__content {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    .modal__image {
+        max-height: 250px;
+    }
   }
   
   @media screen and (max-width: 768px){
@@ -115,6 +278,22 @@
     }
     .work__filters{
       row-gap: .25rem;
+      column-gap: 1rem;
+    }
+    .modal__overlay {
+        padding: 0.5rem;
+    }
+    .modal__content {
+        max-width: 95%;
+        padding: 1rem;
+    }
+    .modal__actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .modal__action-btn {
+        width: 100%;
+        justify-content: center;
     }
   }
   

@@ -1,13 +1,20 @@
 import React from 'react';
-// import "./about.css";
 import "./about.css";
-import Image from "../../assets/avatar-2.svg";
-// import AboutBox from "./AboutBox"
+import Image from "../../assets/photo_imresizer.jpg";
+import { Fade } from "react-awesome-reveal";
 
 const About = () => {
     return (
         <section className="about container section" id="about">
-      <h2 className="section__title">About Me</h2>
+           <Fade direction="up" cascade damping={0.1} triggerOnce>
+      
+      {/* Updated H2 Tag */}
+      <h2 
+        className="section__title wow fadeInUp" 
+        style={{ visibility: 'visible', animationName: 'fadeInUp' }}
+      >
+        About Me
+      </h2>
 
       <div className="about__container grid">
         <img src={Image} alt="" className="about__img" />
@@ -22,7 +29,7 @@ const About = () => {
             products and research UX Development. Apart from programing I have good experience in working 
             with Arduino and other IoT devices.
             </p>
-            <a href="" className="btn">
+            <a href="#contact" className="btn">
               Download Resume
             </a>
           </div>
@@ -85,11 +92,9 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* <AboutBox /> */}
-      
+      </Fade>
     </section>
     )
 }
 
-export default About
+export default About;

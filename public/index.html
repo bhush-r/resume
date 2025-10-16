@@ -1,29 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <meta charset="UTF-8" /> -->
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Bhushan Lilhare Portfolio">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Bhushan Lilhare</title>
-
-    <!-- STYLESHEETS -->
+<link rel="icon" href="%PUBLIC_URL%/avatar-2.svg" />
     <link href="https://d33wubrfki0l68.cloudfront.net/bundles/0ca11f0c650cef76abd00950f12781bcec977910.css" media="all" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+    <style>
+      :root {
+        --preloader-bg: #14213d; /* Matches body-color */
+        --preloader-color: hsl(353, 100%, 65%); /* Matches first-color */
+        --preloader-shadow: rgba(255, 76, 96, 0.8); /* Glow effect for brackets/dots */
+      }
+      
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99999;
+        background-color: var(--preloader-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+      }
+      
+      #preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+      }
 
-    <!-----==================== Simple Line Icons-->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"> -->
+      /* --- NEW LOADER STYLES: Coding Bracket Animation --- */
+      .loader {
+        display: flex;
+        align-items: center;
+        font-size: 4rem; /* Adjusted for better visibility */
+        color: var(--preloader-color);
+      }
+
+      .bracket-left,
+      .bracket-right {
+        font-weight: 300;
+        /* Added shadow for glowing effect */
+        text-shadow: 0 0 5px var(--preloader-shadow), 0 0 10px var(--preloader-shadow);
+        animation: pulse-bracket 2s infinite ease-in-out;
+        opacity: 0.9;
+      }
+
+      .bracket-left {
+        transform: translateX(10px);
+      }
+
+      .bracket-right {
+        transform: translateX(-10px);
+        animation-delay: 0.2s; 
+      }
+
+      .loader-dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--preloader-color);
+        border-radius: 50%;
+        margin: 0 5px;
+        /* Added box-shadow for glowing effect */
+        box-shadow: 0 0 5px var(--preloader-shadow), 0 0 8px var(--preloader-shadow);
+        animation: loading-dots 1.5s infinite ease-in-out;
+      }
+
+      .loader-dot:nth-child(2) {
+        animation-delay: 0.2s;
+        opacity: 0.7;
+      }
+
+      .loader-dot:nth-child(3) {
+        animation-delay: 0.4s;
+        opacity: 0.5;
+      }
+
+      /* Animations */
+      @keyframes pulse-bracket {
+        0%, 100% { transform: scale(1.0) translateY(0) translateX(10px); opacity: 0.9; }
+        50% { transform: scale(1.1) translateY(-5px) translateX(10px); opacity: 1; }
+      }
+      
+      .bracket-right {
+        animation: pulse-bracket-right 2s infinite ease-in-out;
+        animation-delay: 0.2s; 
+      }
+      @keyframes pulse-bracket-right {
+        0%, 100% { transform: scale(1.0) translateY(0) translateX(-10px); opacity: 0.9; }
+        50% { transform: scale(1.1) translateY(-5px) translateX(-10px); opacity: 1; }
+      }
+
+      @keyframes loading-dots {
+        0%, 100% { opacity: 0.4; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      /* --- END NEW LOADER STYLES --- */
+    </style>
 
   </head>
   <body>
+
+    <!-- UPDATED PRELOADER CONTENT: Uses bracket and dot animation for a coding look -->
+    <div id="preloader">
+      <div class="loader">
+        <span class="bracket-left">{</span>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <span class="bracket-right">}</span>
+      </div>
+    </div>
+    
     <div id="root"></div>
 
-    <!-- <script type="module" src="/src/main.jsx"></script> -->
-    <!--=========================== Font Awesome-->
     <script src="https://kit.fontawesome.com/3185cf37a9.js" crossorigin="anonymous"></script>
   </body>
-  
 </html>

@@ -46,6 +46,26 @@
     resize: none;
   }
   
+  /* NEW STATUS STYLES */
+  .contact__status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    font-weight: var(--font-semibold);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .contact__status.success {
+    background-color: #44d7b6; /* Green/Success color */
+    color: var(--body-color);
+  }
+
+  .contact__status.error {
+    background-color: var(--first-color); /* Red/Error color */
+    color: #fff;
+  }
+
   @media screen and (max-width: 1024px){
     .contact__container{
         grid-template-columns: 300px 360px;

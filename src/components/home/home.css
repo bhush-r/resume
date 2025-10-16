@@ -1,4 +1,3 @@
-
 .home {
   position: relative;
   min-height: 100vh;
@@ -9,17 +8,34 @@
   overflow: hidden;
   }
 
+  .home__name {
+  /* Removed fixed width/height to allow text to wrap naturally */
+  display: flex; /* Aligns text vertically */
+  align-items: center; /* Aligns text vertically */
+  justify-content: center; /* Aligns text horizontally */
+  font-size: 2.2rem; 
+  text-align: center;
+  margin-bottom: 0.5rem; /* Added margin for separation */
+
+}
+
 .intro {
-  max-width: 540px;
+  max-width: 510px;
+  width: 100%; /* Ensure it uses max-width responsively */
+  /* Removed fixed height to allow content to dictate height */
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 1rem; /* Added padding for smaller screens */
 }
 
 .home__img {
-  font-size: var(--h1-font-size);
-  font-weight: var(--font-bold);
-  margin-bottom: 0.5rem;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-bottom: 1.5rem; 
+  
 }
 
 .home__socials {
@@ -30,7 +46,6 @@
 }
 
 .home__social-link {
-  /* color: var(--title-color); */
   color: hsl(0, 0%, 100%);
   font-size: 1.3rem;
   transition: 0.3s;
@@ -41,28 +56,56 @@
 }
 
 .scroll__down {
-  /* position: absolute; */
-  /* bottom: 2.5rem; */
   left: 0;
   width: 100%;
-  /* margin: 1rem 0rem; */
-  margin-top: 10rem;
+  margin-top: 11rem; /* Adjusted margin */
+  
 }
 
 .home__scroll-name {
   font-size: var(--small-font-size);
+  color: hsl(0, 0%, 100%); 
+}
+
+/* === Updated Scroll Down Styles Start === */
+
+.mouse__wrapper { 
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  max-width: 100px;
+  margin: auto;
+  text-align: center;
+  text-decoration: none; 
 }
 
 .mouse {
-  border: 2px solid var(--text-color);
+  border: solid 2px #fff;
+  border-radius: 16px;
   display: block;
-  height: 1.6rem;
-  width: 1.25rem;
   margin: auto;
-  margin-top: 0.75rem;
-  border-radius: 1rem;
+  margin-top: 10px;
+  height: 26px;
   position: relative;
+  width: 20px;
 }
+
+.mouse .wheel {
+  background: #fff;
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 4px;
+  -webkit-animation: ani-mouse 2s linear infinite;
+  -moz-animation: ani-mouse 2s linear infinite;
+  animation: ani-mouse 2s linear infinite;
+}
+
+/* === Updated Scroll Down Styles End === */
 
 @keyframes ani-mouse {
   0% {
@@ -79,17 +122,8 @@
   }
 }
 
-.wheel {
-  background-color: var(--title-color);
-  border-radius: 100%;
-  width: 0.25rem;
-  height: 0.25rem;
-  position: absolute;
-  top: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: ani-mouse 2s linear infinite;
-}
+/* The wheel definitions were duplicated, keeping the one used by the animation */
+/* .wheel { ... } */ 
 
 .shapes {
   position: absolute;
@@ -158,32 +192,18 @@
   right: 2%;
 }
 
-/* .particles-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  /* z-index: -1; Make sure it's behind the intro content */
-  
-/* } */ 
 
-/* .particles-container { */
-  /* position: absolute; */
-  /* width: 100%; */
-  /* height: 100vh; */
-  /* or any other height you want */
-  /* overflow: hidden; */
-/* } */
-/* Ensures the particles are constrained to the .home.container */
 .particles-container {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 120%;
   height: 100%; /* Matches the height of the container */
-  z-index: 0; /* Place it behind other content */
+  z-index: -1; /* Place it behind other content */
   pointer-events: none; /* Prevent interaction with particles */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .home.container {
@@ -191,26 +211,25 @@
   z-index: 1; /* Ensure it's above the particles */
 }
 
-
-.txt-rotate > .wrap {
-  border-right: 0.08em solid #666;
+/* Updated cursor blink animation */
+.home__education .cursor {
   display: inline-block;
-  animation: blink-cursor 0.7s step-end infinite;
+  background-color: var(--first-color); /* Used var(--first-color) instead of var(--title-color) */
+  margin-left: 0.1rem;
+  width: 3px;
+  height: 1.25rem; /* Ensure cursor matches text height */
+  vertical-align: middle;
+  animation: blink 0.7s infinite;
 }
 
-@keyframes blink-cursor {
-  from {
-    border-right-color: transparent;
-  }
-  to {
-    border-right-color: #666;
-  }
+@keyframes blink {
+  0% { background-color: var(--first-color); }
+  49% { background-color: var(--first-color); }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100% { background-color: var(--first-color); }
 }
 
-
-
-@media screen and (max-width: 1024px) {
-  .home__social-link {
-    font-size: 1.125rem;
-  }
-}
+/* Removed redundant CSS for text-rotate as it is handled by GSAP */
+/* .txt-rotate > .wrap { ... } */
+/* @keyframes blink-cursor { ... } */

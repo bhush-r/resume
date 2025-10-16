@@ -1,96 +1,77 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import "./home.css";
-import Me from "../../assets/avatar-1.svg";
+import Me from "../../assets/photo_imresizer.jpg";
 import HeaderSocials from "./HeaderSocials";
 import ScrollDown from "./ScrollDown";
 import ParticlesComponent from "./ParticlesComponent";
+import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(TextPlugin);
 
 const Home = () => {
-  useEffect(() => {
-    const elements = document.querySelectorAll(".txt-rotate");
-    elements.forEach((el) => {
-      const toRotate = JSON.parse(el.getAttribute("data-rotate"));
-      const period = parseInt(el.getAttribute("data-period"), 10) || 2000;
-      let loopNum = 0;
-      let isDeleting = false;
-      let txt = "";
+  const container = useRef();
+  const textRef = useRef();
 
-      const tick = () => {
-        const i = loopNum % toRotate.length;
-        const fullTxt = toRotate[i];
-
-        txt = isDeleting
-          ? fullTxt.substring(0, txt.length - 1)
-          : fullTxt.substring(0, txt.length + 1);
-
-        el.innerHTML = `<span class="wrap">${txt}</span>`;
-
-        let delta = isDeleting ? 100 : 200;
-
-        if (!isDeleting && txt === fullTxt) {
-          delta = period;
-          isDeleting = true;
-        } else if (isDeleting && txt === "") {
-          isDeleting = false;
-          loopNum++;
-          delta = 500;
-        }
-
-        setTimeout(tick, delta);
-      };
-
-      tick();
+  // GSAP logic for the typewriter effect
+  useGSAP(() => {
+    // Array of words to cycle through
+    const words = ["Software Tester", "Android Developer", "Native Apps Developer", "A Tech Enthusiast"];
+    
+    // GSAP Timeline for the rotating text effect
+    let tl = gsap.timeline({ 
+      repeat: -1, 
+      repeatDelay: 0.5 // Pause after the word is fully displayed
     });
-  }, []);
+
+    words.forEach(word => {
+      // Create a timeline segment for typing and deleting each word
+      tl.to(textRef.current, { 
+          duration: 1.5, // Typing duration
+          text: word, 
+          ease: "power2.inOut" 
+      })
+      .to(textRef.current, { 
+          duration: 0.5, // Pause before deleting
+          delay: 1.5, 
+          text: word, 
+          ease: "none" 
+      })
+      .to(textRef.current, { 
+          duration: 1, // Deleting duration
+          text: "", 
+          ease: "power2.inOut" 
+      }, "+=0.2"); // Start deleting slightly after the pause
+    });
+  }, { scope: container, revertOnUpdate: true }); // revertOnUpdate is good practice for hot reloading
 
   return (
-    <section className="home container" id="home">
-      <ParticlesComponent id="tsparticles" />
-      <div className="intro">
-        <img src={Me} alt="" className="home__img" />
+    <section className="home container" id="home" ref={container}>
+      {/* Particles effect background */}
+      <ParticlesComponent id="tsparticles" /> 
+      
+      {/* Framer Motion animation for the main content intro */}
+      <motion.div
+        className="intro"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <img src={Me} alt="Bhushan Lilhare" className="home__img" />
         <h1 className="home__name">Bhushan Lilhare</h1>
-        <span
-          className="txt-rotate"
-          data-period="1000"
-          data-rotate='[ "Product", "Android Developer", "iOS Developer", "A Tech Enthusiast" ]'
-        ></span>
+        <span className="home__education">
+          I'm a <span className="txt-rotate" ref={textRef}></span>
+          {/* Cursor is implemented purely with CSS in home.css using the .cursor class */}
+          <span className="cursor"></span> 
+        </span>
+
         <HeaderSocials />
-        {/* <a href="#contact" className="btn">
-          Hire Me
-        </a> */}
         <ScrollDown />
-      </div>
+      </motion.div>
     </section>
   );
 };
 
 export default Home;
-
-
-// import React from "react";
-// import "./home.css";
-// import Me from "../../assets/avatar-1.svg";
-// import HeaderSocials from "./HeaderSocials";
-// import ScrollDown from "./ScrollDown";
-// import ParticlesComponent from "./ParticlesComponent";
-
-// const Home = () => {
-//   return (
-//     <section className="home container" id="home">
-//       <ParticlesComponent id="tsparticles" />
-//       <div className="intro">
-//         <img src={Me} alt="" className="home__img" />
-//         <h1 className="home__name">Bhushan Lilhare</h1>
-//         <span className="home__education">I'm a Java developer</span>
-
-//         <HeaderSocials />
-//         <a href="#contact" className="btn">
-//           Hire Me
-//         </a>
-//         <ScrollDown />
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Home;

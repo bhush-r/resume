@@ -3,7 +3,7 @@ import "./services.css";
 import Image1 from "../../assets/service-1.svg";
 import Image2 from "../../assets/service-2.svg";
 import Image3 from "../../assets/service-3.svg";
-
+import { Fade } from "react-awesome-reveal";
 
 const data = [
     {
@@ -32,6 +32,7 @@ const data = [
 const Services = () => {
     return (
         <section className="services container section" id="services">
+          <Fade direction="up" triggerOnce>
       <h2 className="section__title">Skills</h2>
 
       <div className="services__container grid">
@@ -46,6 +47,7 @@ const Services = () => {
           );
         })}
       </div>
+      </Fade>
     </section>
     )
 }
