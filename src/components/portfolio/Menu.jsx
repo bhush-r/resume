@@ -37,7 +37,7 @@ const Menu = [
     description: "A smart EMI tracking mobile app that reminds users about upcoming payments, maintains history, and manages multiple loans efficiently.",
     tech: ["Flutter", "Firebase", "SQLite/MySQL", "Notifications","Dart"],
     repo_link: "https://github.com/bhush-r/fire_reminder_flutter.git",
-    live_link: null,
+    live_link: "null",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const Menu = [
     description: "A college companion mobile app providing notices, study materials, discussions, faculty info, and previous year questions for students in a single platform.",
     tech: ["Java", "Android","XML","Firebase", "Authentication", "Kotlin"],
     repo_link: "https://github.com/bhush-r/GHRCE_College.git",
-    live_link: null,
+    live_link: "null",
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const Menu = [
     description: "A real-time messaging application replicating core chat functionalities including messaging, online status, notifications, and media sharing.",
     tech: ["Kotlin", "MVVM","Firebase Realtime Database", "Authentication", "Push Notifications"],
     repo_link: "https://github.com/bhush-r/WhatsApp.git",
-    live_link: null,
+    live_link: "null",
   },
   {
     id: 2,
