@@ -33,7 +33,7 @@ const Menu = [
     id: 7,
     image: Work7,
     title: "Loan Reminder App",
-    category: "Android",
+    category: "Flutter",
     description: "A smart EMI tracking mobile app that reminds users about upcoming payments, maintains history, and manages multiple loans efficiently.",
     tech: ["Flutter", "Firebase", "SQLite/MySQL", "Notifications","Dart"],
     repo_link: "https://github.com/bhush-r/fire_reminder_flutter.git",
