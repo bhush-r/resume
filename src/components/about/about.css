@@ -1,182 +1,176 @@
+/* ================= LAYOUT ================= */
+
 .about__container {
   grid-template-columns: 3fr 9fr;
-  column-gap: 1.875rem;
+  column-gap: 2rem;
+  align-items: center;
 }
 
-/* This rule keeps your image circular and centered */
+/* ================= PROFILE IMAGE ================= */
+
 .about__img {
-  width: 165px;
-  height: 165px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   object-fit: cover;
   justify-self: center;
+  transition: 0.4s;
+
+  box-shadow:
+    0 0 30px rgba(0,255,255,0.25),
+    0 0 90px rgba(0,255,255,0.15);
 }
+
+.about__img:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 45px rgba(0,255,255,0.5),
+    0 0 140px rgba(0,255,255,0.35);
+}
+
+/* ================= GLASS CARD ================= */
 
 .about__data {
-  position: relative; /* Added for the ::before pseudo-element positioning */
-  padding: 1.875rem;
-  background-color: var(--container-color);
-  box-shadow: var(--shadow);
-  border-radius: var(--border-radius);
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 1.875rem;
-  align-items: flex-start; 
+  column-gap: 2rem;
+  transition: 0.35s ease;
 }
 
+.about__data:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* Arrow */
 .about__data::before {
   content: "";
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent; 
-  border-bottom: 10px solid transparent;
-  border-right: 15px solid var(--container-color);
   position: absolute;
-  left: -0.93rem;
-  top: 20%;
+  left: -14px;
+  top: 22%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 16px solid rgba(255,255,255,0.05);
 }
+
+/* ================= TEXT ================= */
 
 .about__description {
-  margin-bottom: 1rem;
   text-align: justify;
+  margin-bottom: 1.4rem;
+  line-height: 1.7;
+  opacity: 0.95;
 }
+
+/* ================= BUTTON ================= */
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 30px;
+  background: linear-gradient(135deg,#ff4c60,#ff7a8a);
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,76,96,0.5);
+}
+
+/* ================= SKILLS ================= */
 
 .about__skills {
-  row-gap: 1.25rem;
+  row-gap: 1.4rem;
 }
 
+/* title row */
 .skills__titles {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .skills__name {
-  font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
+  font-weight: 500;
+}
+
+/* percent alignment FIX */
+.skills__percent {
+  min-width: 48px;
+  text-align: right;
+  font-weight: 600;
+  color: #00f5ff;
+  font-family: monospace;
 }
 
 .skills__number {
-  line-height: 1.2;
+  margin-right: 2px;
 }
 
-.skills__bar,
-.skills__percentage {
-  height: 7px;
-  border-radius: 0.25rem;
-}
-
+/* bar */
 .skills__bar {
-  background-color: #f1f1f1;
+  height: 7px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  overflow: hidden;
 }
 
 .skills__percentage {
   display: block;
+  height: 7px;
+  width: 0%;
+  border-radius: 10px;
 }
 
-/* --- ✨ NEW ANIMATION CODE STARTS HERE (Fill Bar on Scroll) ✨ --- */
-@keyframes fill-bar {
-  from {
-    width: 0%;
-  }
-  to {
-    /* Target width is set by the inline style in the React component */
-    opacity: 1; 
-  }
-}
+/* ===== Skill Colors ===== */
 
-/* Set initial state for animation (optional but good practice) */
-.skills__percentage {
-    opacity: 0; 
-}
+.android { background: linear-gradient(90deg,#ffd15c,#ff9f1c); }
+.java { background: linear-gradient(90deg,#ff4c60,#ff758f); }
+.kotlin { background: linear-gradient(90deg,#6c6ce5,#9f7aea); }
+.cpp { background: linear-gradient(90deg,#e0118a,#ff4ecd); }
+.python { background: linear-gradient(90deg,#00c9ff,#92fe9d); }
 
-.android_development {
-  background-color: rgb(255, 209, 92);
-  width: 85%; /* Setting the final width here, animation handles the transition */
-  animation: fill-bar 1.5s ease-out forwards; 
-}
-
-.java {
-  background-color: rgb(255, 76, 96);
-  width: 80%;
-  animation: fill-bar 1.5s ease-out forwards;
-}
-.kotlin {
-  background-color: rgb(108, 108, 229); 
-  width: 85%;
-  animation: fill-bar 1.5s ease-out forwards;
-}
-.oops {
-  background-color: rgb(230, 17, 138);
-  width: 85%;
-  animation: fill-bar 1.5s ease-out forwards;
-}
-.python {
-  background-color: rgb(108, 108, 229); 
-  width: 75%;
-  animation: fill-bar 1.5s ease-out forwards;
-}
-
-/* Removed redundant fill-bar keyframes from the bottom, kept the core definitions */
-
+/* ================= RESPONSIVE ================= */
 
 @media screen and (max-width: 1024px) {
+
   .about__container {
-    grid-template-columns: 720px;
-    justify-content: center;
-    row-gap: 1.875rem;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
   }
 
-  .about__data::before {
-    content: ""; /* Keep content for the arrow */
-    border-top: 10px solid var(--container-color); /* Arrow pointing up */
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: none;
-    left: 49%;
-    top: -10px; /* Moved up slightly */
-    transform: translateX(-50%); /* Centering fix */
-  }
-
-  .about__img {
-    justify-self: center;
-  }
-
-  .about__box {
-    flex-direction: column;
-    row-gap: .5rem;
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .about__container {
-    grid-template-columns: 350px;
-  }
-  .about__data::before {
-    left: 47%;
-  }
   .about__data {
     grid-template-columns: 1fr;
-    row-gap: 1.875rem;
   }
-  .about__boxes {
-    grid-template-columns: repeat(2, 150px);
-    row-gap: 1.5rem;
-    justify-content: center;
+
+  .about__data::before {
+    left: 50%;
+    top: -12px;
+    transform: translateX(-50%) rotate(90deg);
   }
 }
 
-@media screen and (max-width: 576px) {
-  .about__container {
-    grid-template-columns: 320px;
-  }
-}
+@media screen and (max-width: 600px) {
 
-@media screen and (max-width: 350px) {
-  .about__container {
-    grid-template-columns: 1fr;
+  .about__img {
+    width: 140px;
+    height: 140px;
   }
-  .about__boxes {
-    grid-template-columns: 1fr;
+
+  .about__data {
+    padding: 1.5rem;
+  }
+
+  .skills__name {
+    font-size: 0.9rem;
   }
 }

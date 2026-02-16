@@ -1,65 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import './topbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faHome, 
-  faUser, 
-  faLaptopCode, 
-  faBriefcase, 
-  faImages, 
-  faBlog, 
-  faEnvelope 
-} from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import "./topbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faUser,
+  faLaptopCode,
+  faBriefcase,
+  faImages,
+  faBlog,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 
-// 🔴 moved outside component (important fix)
 const menuItems = [
-  { name: 'Home', href: '#home', icon: faHome },
-  { name: 'About', href: '#about', icon: faUser },
-  { name: 'Skills', href: '#services', icon: faLaptopCode },
-  { name: 'Experience', href: '#resume', icon: faBriefcase },
-  { name: 'Works', href: '#portfolio', icon: faImages },
-  { name: 'Blog', href: '#blog', icon: faBlog },
-  { name: 'Contact', href: '#contact', icon: faEnvelope },
+  { name: "Home", href: "#home", icon: faHome },
+  { name: "About", href: "#about", icon: faUser },
+  { name: "Skills", href: "#services", icon: faLaptopCode },
+  { name: "Experience", href: "#resume", icon: faBriefcase },
+  { name: "Works", href: "#portfolio", icon: faImages },
+  { name: "Blog", href: "#blog", icon: faBlog },
+  { name: "Contact", href: "#contact", icon: faEnvelope },
 ];
 
 const TopBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState("home");
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  /* lock body scroll */
   useEffect(() => {
-    const sections = menuItems.map(item => document.querySelector(item.href)).filter(Boolean);
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveLink(entry.target.id);
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: "-50% 0px -50% 0px",
-      threshold: 0
-    });
+  /* active section highlight */
+  useEffect(() => {
+    const sections = menuItems
+      .map((item) => document.querySelector(item.href))
+      .filter(Boolean);
 
-    sections.forEach(section => observer.observe(section));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveLink(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
 
-    // ✔ proper cleanup
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-
   }, []);
 
   return (
     <nav className="custom-navbar">
-      <div className="custom-navbar__container container">
+      <div className="custom-navbar__container">
         <a href="#home" className="custom-navbar__brand">
           <span className="brand-text">Bhushan</span>
           <span className="brand-dot">.</span>
         </a>
 
         <button
-          className={`custom-navbar__toggle ${menuOpen ? 'open' : ''}`}
+          className={`custom-navbar__toggle ${menuOpen ? "open" : ""}`}
           onClick={toggleMenu}
           aria-label="Toggle navigation"
         >
@@ -74,12 +77,14 @@ const TopBar = () => {
           )}
         </button>
 
-        <div className={`custom-navbar__menu ${menuOpen ? 'open' : ''}`}>
+        <div className={`custom-navbar__menu ${menuOpen ? "open" : ""}`}>
           {menuItems.map((item, index) => (
-            <a 
-              key={index} 
-              href={item.href} 
-              className={`custom-navbar__link ${activeLink === item.href.substring(1) ? 'active' : ''}`} 
+            <a
+              key={index}
+              href={item.href}
+              className={`custom-navbar__link ${
+                activeLink === item.href.substring(1) ? "active" : ""
+              }`}
               onClick={() => {
                 setActiveLink(item.href.substring(1));
                 setMenuOpen(false);

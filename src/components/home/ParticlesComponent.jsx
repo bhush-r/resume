@@ -144,3 +144,88 @@ const ParticlesComponent = (props) => {
 };
 
 export default ParticlesComponent;
+
+
+// import { useEffect, useMemo, useState } from "react";
+// import Particles, { initParticlesEngine } from "@tsparticles/react";
+// import { loadSlim } from "@tsparticles/slim";
+
+// const ParticlesComponent = ({ id }) => {
+//   const [init, setInit] = useState(false);
+
+//   /* Load engine once */
+//   useEffect(() => {
+//     initParticlesEngine(async (engine) => {
+//       await loadSlim(engine);
+//     }).then(() => setInit(true));
+//   }, []);
+
+//   /* Options */
+//   const options = useMemo(() => ({
+//     fullScreen: { enable: false },
+
+//     background: {
+//       color: { value: "transparent" }
+//     },
+
+//     fpsLimit: 120,
+
+//     interactivity: {
+//       events: {
+//         onHover: {
+//           enable: true,
+//           mode: "repulse"
+//         }
+//       },
+//       modes: {
+//         repulse: {
+//           distance: 90,
+//           duration: 0.4
+//         }
+//       }
+//     },
+
+//     particles: {
+//       number: {
+//         value: 120,
+//         density: { enable: true, area: 800 }
+//       },
+
+//       color: { value: "#ffffff" },
+
+//       links: {
+//         enable: true,
+//         color: "#ffffff",
+//         distance: 160,
+//         opacity: 0.4,
+//         width: 1
+//       },
+
+//       move: {
+//         enable: true,
+//         speed: 2.2,
+//         outModes: { default: "bounce" }
+//       },
+
+//       opacity: { value: 0.7 },
+
+//       size: { value: { min: 1, max: 2 } },
+
+//       shape: { type: "circle" }
+//     },
+
+//     detectRetina: true
+//   }), []);
+
+//   if (!init) return null;
+
+//   return (
+//     <Particles
+//       id={id}
+//       options={options}
+//       className="particles-container"
+//     />
+//   );
+// };
+
+// export default ParticlesComponent;

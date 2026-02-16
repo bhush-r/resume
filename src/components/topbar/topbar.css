@@ -1,4 +1,4 @@
-/* Custom Navbar Styles */
+
 .custom-navbar {
   width: 100%;
   background: #14213d;
@@ -7,7 +7,7 @@
   left: 0;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-bottom: 1px solid #23325c; /* Added this line for visibility */
+  border-bottom: 1px solid #23325c; 
 }
 .custom-navbar__container {
   max-width: 1200px;
@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0.5rem 2rem; */
+  
 }
 .custom-navbar__brand {
   display: flex;
@@ -36,14 +36,14 @@
 }
 .custom-navbar__toggle {
   display: none;
-  background: transparent; /* Changed from #101c36 */
-  border: none; /* Changed from 2px solid #23325c */
+  background: transparent; 
+  border: none; 
   border-radius: 6px;
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
   padding: 0.3rem 0.7rem;
-  z-index: 10001; /* Ensure toggle is above menu */
+  z-index: 10001; 
   position: relative;
   transition: background 0.2s, border 0.2s;
 }
@@ -78,7 +78,7 @@
   background: rgba(255,209,92,0.08);
 }
 
-/* Responsive Styles */
+
 @media (max-width: 900px) {
   .custom-navbar__container {
     padding: 0.5rem 1rem;
@@ -91,24 +91,24 @@
     right: 1.5rem;
     top: 1.1rem;
   }
-  .custom-navbar__menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%; /* Changed from 100vw to 100% */
-    background: #101c36;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 0.5rem 0;
-    display: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    z-index: 9999; /* Ensure menu overlays content */
-    border-bottom: 1px solid #23325c;
-  }
-  .custom-navbar__menu.open {
-    display: flex;
-  }
+ .custom-navbar__menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 260px;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(14px);
+
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+
+
+.custom-navbar__menu.open {
+  transform: translateX(0);
+}
+
   .custom-navbar__link {
     width: 100%;
     padding: 1rem 2rem;
@@ -145,4 +145,34 @@
 }
 .custom-navbar__toggle.open .hamburger-icon span {
   background: #ffd15c;
+}
+
+
+@media (max-width: 768px) {
+
+  .custom-navbar__container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0.8rem 1rem;
+  }
+
+  .custom-navbar__menu {
+    left: auto;
+    right: 0;
+    width: 260px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding-top: 80px;
+    gap: 6px;
+  }
+
+  .custom-navbar__link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 14px 18px;
+  }
+
 }

@@ -8,15 +8,24 @@
   overflow: hidden;
   }
 
-  .home__name {
-  /* Removed fixed width/height to allow text to wrap naturally */
-  display: flex; /* Aligns text vertically */
-  align-items: center; /* Aligns text vertically */
-  justify-content: center; /* Aligns text horizontally */
-  font-size: 2.2rem; 
+/* ===== Gradient Animated Name ===== */
+.home__name {
+  font-size: 2.6rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 0.5rem; /* Added margin for separation */
+  margin-bottom: 0.5rem;
 
+  background: linear-gradient(90deg,#00f5ff,#00ff88,#ffffff,#00f5ff);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {background-position:0%}
+  100% {background-position:300%}
 }
 
 .intro {
@@ -29,13 +38,26 @@
   padding: 1rem; /* Added padding for smaller screens */
 }
 
+/* ===== Floating Image Glow ===== */
 .home__img {
   width: 160px;
   height: 160px;
-  border-radius: 50%; 
-  object-fit: cover; 
-  margin-bottom: 1.5rem; 
-  
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  transition: 0.4s;
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.2),
+    0 0 60px rgba(0,200,255,0.25),
+    0 0 120px rgba(0,200,255,0.15);
+}
+
+.home__img:hover {
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.5),
+    0 0 100px rgba(0,200,255,0.7),
+    0 0 180px rgba(0,200,255,0.5);
 }
 
 .home__socials {
@@ -211,24 +233,28 @@
   z-index: 1; /* Ensure it's above the particles */
 }
 
-/* Updated cursor blink animation */
+/* ===== Cursor ===== */
 .home__education .cursor {
   display: inline-block;
-  background-color: var(--first-color); /* Used var(--first-color) instead of var(--title-color) */
-  margin-left: 0.1rem;
+  background-color: #00f5ff;
+  margin-left: 4px;
   width: 3px;
-  height: 1.25rem; /* Ensure cursor matches text height */
-  vertical-align: middle;
+  height: 1.25rem;
   animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
+  0%,49%{background:#00f5ff}
+  50%,100%{background:transparent}
+}
+
+/* @keyframes blink {
   0% { background-color: var(--first-color); }
   49% { background-color: var(--first-color); }
   50% { background-color: transparent; }
   99% { background-color: transparent; }
   100% { background-color: var(--first-color); }
-}
+} */
 
 /* Removed redundant CSS for text-rotate as it is handled by GSAP */
 /* .txt-rotate > .wrap { ... } */

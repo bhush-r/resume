@@ -1,23 +1,81 @@
-import React from 'react';
+import React, { useRef } from "react";
 import "./about.css";
 import Image from "../../assets/photo_imresizer.jpg";
-import { Fade } from "react-awesome-reveal";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const skills = [
+  { name: "Android Development", value: 85, class: "android" },
+  { name: "Java", value: 80, class: "java" },
+  { name: "Kotlin", value: 85, class: "kotlin" },
+  { name: "C++", value: 85, class: "cpp" },
+  { name: "Python", value: 75, class: "python" },
+];
 
 const About = () => {
-    return (
-        <section className="about container section" id="about">
-           <Fade direction="up" cascade damping={0.1} triggerOnce>
-      
-      {/* Updated H2 Tag */}
-      <h2 
-        className="section__title wow fadeInUp" 
-        style={{ visibility: 'visible', animationName: 'fadeInUp' }}
-      >
-        About Me
-      </h2>
+  const container = useRef();
+
+  useGSAP(() => {
+
+    /* ===== Skill Bar Animation ===== */
+    gsap.utils.toArray(".skills__percentage").forEach((bar) => {
+      const width = bar.getAttribute("data-skill");
+
+      gsap.fromTo(
+        bar,
+        { width: "0%" },
+        {
+          width: width,
+          duration: 1.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bar,
+            start: "top 85%",
+          },
+        }
+      );
+    });
+
+    /* ===== Percentage Counter ===== */
+    gsap.utils.toArray(".skills__number").forEach((num) => {
+      const finalVal = parseInt(num.innerText);
+
+      gsap.fromTo(
+        num,
+        { innerText: 0 },
+        {
+          innerText: finalVal,
+          duration: 2,
+          snap: { innerText: 1 },
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: num,
+            start: "top 90%",
+          },
+        }
+      );
+    });
+
+    /* ===== Floating Image ===== */
+    gsap.to(".about__img", {
+      y: 12,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.5,
+      ease: "sine.inOut",
+    });
+
+  }, { scope: container });
+
+  return (
+    <section className="about container section" id="about" ref={container}>
+      <h2 className="section__title">About Me</h2>
 
       <div className="about__container grid">
-        <img src={Image} alt="" className="about__img" />
+        <img src={Image} alt="profile" className="about__img" />
 
         <div className="about__data grid">
           <div className="about__info">
@@ -29,72 +87,36 @@ const About = () => {
             products and research UX Development. Apart from programing I have good experience in working 
             with Arduino and other IoT devices.
             </p>
+
             <a href="#contact" className="btn">
               Download Resume
             </a>
           </div>
 
           <div className="about__skills grid">
-            <div className="skills__data">
-              <div className="skills__titles">
-                <h3 className="skills__name">Android Development</h3>
-                <span className="skills__number">85%</span>
-              </div>
+            {skills.map((skill, index) => (
+              <div className="skills__data" key={index}>
+                <div className="skills__titles">
+                  <h3 className="skills__name">{skill.name}</h3>
 
-              <div className="skills__bar">
-                <span className="skills__percentage android_development"></span>
-              </div>
-            </div>
+                  <span className="skills__percent">
+                    <span className="skills__number">{skill.value}</span>%
+                  </span>
+                </div>
 
-            <div className="skills__data">
-              <div className="skills__titles">
-                <h3 className="skills__name">Java</h3>
-                <span className="skills__number">80%</span>
+                <div className="skills__bar">
+                  <span
+                    className={`skills__percentage ${skill.class}`}
+                    data-skill={`${skill.value}%`}
+                  ></span>
+                </div>
               </div>
-
-              <div className="skills__bar">
-                <span className="skills__percentage java"></span>
-              </div>
-            </div>
-
-            <div className="skills__data">
-              <div className="skills__titles">
-                <h3 className="skills__name">Kotlin</h3>
-                <span className="skills__number">85%</span>
-              </div>
-
-              <div className="skills__bar">
-                <span className="skills__percentage kotlin"></span>
-              </div>
-            </div>
-
-            <div className="skills__data">
-              <div className="skills__titles">
-                <h3 className="skills__name">C++</h3>
-                <span className="skills__number">85%</span>
-              </div>
-
-              <div className="skills__bar">
-                <span className="skills__percentage oops"></span>
-              </div>
-            </div>
-
-            <div className="skills__data">
-              <div className="skills__titles">
-                <h3 className="skills__name">Python</h3>
-                <span className="skills__number">75%</span>
-              </div>
-
-              <div className="skills__bar">
-                <span className="skills__percentage python"></span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-      </Fade>
     </section>
-    )
-}
+  );
+};
 
 export default About;
